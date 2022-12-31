@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BeachAppBackendApplication {
+public class BeachappbackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BeachAppBackendApplication.class, args);
+		SpringApplication.run(BeachappbackendApplication.class, args);
 	}
 
 }
