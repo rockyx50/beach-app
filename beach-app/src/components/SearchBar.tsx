@@ -1,32 +1,18 @@
 import React, { useState } from 'react';
 
 
-export function SearchBar(){
 
-  // handleSubmit(i){
-  // alert('A beach was searched': props.value)
-  // }
-
-  const [userInput, setUserInput] = useState('a');
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput(event.target.value)
-    console.log(userInput)
-  }
-  
-  const handleSubmit = () => {
-    console.log(userInput)
-  }
-
+export function SearchBar(props:{userInput: any, handleChange: any, handleSubmit: any}){
 
   return(
   <div>
-    <form >
+    <form onSubmit={() => props.handleSubmit()}>
           <label>
-            <input type="text" placeholder='Find a beach' onChange={(event) => handleChange(event)}/>
+            <input type="text" placeholder='Find a beach' onChange={(event) => props.handleChange(event)}/>
           </label>
-          <input type="submit" value="Submit" onSubmit={() => handleSubmit()} />
+          <input type="submit" value="Submit" />
     </form>
-    <p>The current state is {userInput}</p>
+    <p>The current state is {props.userInput}</p>
   </div>
   );
   }
