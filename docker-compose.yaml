@@ -11,6 +11,7 @@ services:
 #      - ./src/main/resources/forecasts:/src/main/resources/forecasts
 #      - ./src/main/resources/confirmationMessage.json:/src/main/resources/confirmationMessage.json
 
+
   frontend:
     build:
       context: ./beach-app
