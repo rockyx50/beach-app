@@ -1,10 +1,10 @@
-import logo from '../logo.svg';
 import '../App.css';
 import { SearchBar } from '../components/SearchBar';
-import React from 'react';
+
 
 function Homepage(props:{searchBarInput: any, handleSearchBarChange: any, handleSearchBarSubmit: any}) {
-    return (
+
+  return (
         <div >
             
             <h1>
