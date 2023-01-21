@@ -1,42 +1,41 @@
 import '../App.css';
 import { SearchBar } from '../components/SearchBar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
 function Homepage(props:{searchBarInput: any, handleSearchBarChange: any, handleSearchBarSubmit: any}) {
 
-  // const [beach, setBeach] = useState({id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0, tier_rank:0});
   const beachList: {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0, tier_rank:0}[] = [];
   for (let i = 0; i < 9; i++){
     beachList[i] = {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0, tier_rank:0};
   }
-  const [beaches, setBeach] = useState(beachList);
-
+  const [beaches, setBeaches] = useState(beachList);
 
   const getRandomListOfBeaches = () => {
-    // setUserInput(userInput.toLowerCase())
     fetch(`http://localhost:8080/beachappbackend/getRandomBeachInfo?numberOfBeaches=9`,{method:'GET'})
          .then((response) => {
           if (!response.ok) {
             throw new Error(response.statusText)
           }
-          return response.json() as Promise<typeof beachList >
+          return response.json() as Promise<typeof beaches >
         })
          .then((data) => {
           if (data.length > 0){
-            for (let i = 0; i < data.length; i++){
-              beachList[i] = data[i];
-              console.log(beachList[i])
-            }
+            setBeaches(data);
           } 
          })
          .catch((err) => {
             console.log(err.message);
          });
         }
-        getRandomListOfBeaches();
 
+        
+        useEffect(() => { 
+          getRandomListOfBeaches();
+        console.log(beaches);
+          }, [])
+        
   return (
         <div className='parent'>
           <div className='heading'>
