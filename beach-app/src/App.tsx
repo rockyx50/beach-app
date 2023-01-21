@@ -19,6 +19,7 @@ function App() {
   }
   
   const handleSearchBarSubmit = () => {
+    // setUserInput(userInput.toLowerCase())
     fetch(`http://localhost:8080/beachappbackend/getBeachInfo?beachName=${userInput}`,{method:'GET'})
          .then((response) => {
           if (!response.ok) {

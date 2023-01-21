@@ -14,6 +14,10 @@ public class BeachService {
         return jdbcRepository.getBeaches(beachName);
     }
 
+    public Beach getBeachById(Integer id){
+        return jdbcRepository.getBeachById(id);
+    }
+
     @Autowired
     JdbcRepository jdbcRepository;
 }

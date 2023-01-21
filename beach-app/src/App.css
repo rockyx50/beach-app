@@ -28,6 +28,49 @@
   color: #61dafb;
 }
 
+.centered {
+  display: grid;
+  /* display: flex; */
+     place-content: center;
+     height: 100vh;
+     /* width: 100vw; */
+}
+
+h1,p{margin:0 0 1em}
+html,body{margin:0;padding:0;}
+
+.header{
+  height: 20vh;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  }
+  
+  .nav-bar { grid-area: 1 / 1 / 2 / 4; }
+  .heading { grid-area: 1 / 1 / 2 / 2; }
+  .search { grid-area: 2 / 2 / 3 / 3; }
+  .examples { grid-area: 3 / 1 / 6 / 4; }
+  .example-1 { grid-area: 3 / 1 / 4 / 2; }
+  .example-2 { grid-area: 3 / 2 / 4 / 3; }
+  .example-3 { grid-area: 3 / 3 / 4 / 4; }
+  .example-4 { grid-area: 4 / 1 / 5 / 2; }
+  .example-5 { grid-area: 4 / 2 / 5 / 3; }
+  .example-6 { grid-area: 4 / 3 / 5 / 4; }
+  .example-7 { grid-area: 5 / 1 / 6 / 2; }
+  .example-8 { grid-area: 5 / 2 / 6 / 3; }
+  .example-9 { grid-area: 5 / 3 / 6 / 4; }
+  
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
