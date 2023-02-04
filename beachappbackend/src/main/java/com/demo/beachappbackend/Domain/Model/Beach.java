@@ -42,11 +42,11 @@ public class Beach {
         this.tier_rank = tier_rank;
     }
 
-    public int getBeachlength_km() {
+    public float getBeachlength_km() {
         return beachlength_km;
     }
 
-    public void setBeachlength_km(int beachlength_km) {
+    public void setBeachlength_km(float beachlength_km) {
         this.beachlength_km = beachlength_km;
     }
 
@@ -63,6 +63,6 @@ public class Beach {
     String county;
     String beach_name;
     int tier_rank;
-    int beachlength_km;
+    float beachlength_km;
     int rating;
 }
