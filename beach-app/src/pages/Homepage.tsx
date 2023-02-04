@@ -1,14 +1,15 @@
 import '../App.css';
 import { SearchBar } from '../components/SearchBar';
 import React, { useState, useEffect } from 'react';
+import { Tile } from '../components/Tile';
 
 
 
-function Homepage(props:{searchBarInput: any, handleSearchBarChange: any, handleSearchBarSubmit: any}) {
+function Homepage(props:{searchBarInput: any, handleSearchBarChange: any, handleSearchBarSubmit: any, handleTileButtonSubmit: any}) {
 
-  const beachList: {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0, tier_rank:0}[] = [];
+  const beachList: {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0.0, tier_rank:0}[] = [];
   for (let i = 0; i < 9; i++){
-    beachList[i] = {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0, tier_rank:0};
+    beachList[i] = {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0.0, tier_rank:0};
   }
   const [beaches, setBeaches] = useState(beachList);
 
@@ -47,33 +48,36 @@ function Homepage(props:{searchBarInput: any, handleSearchBarChange: any, handle
             <div className="search center" >
             <SearchBar userInput={props.searchBarInput} handleChange={props.handleSearchBarChange} handleSubmit={props.handleSearchBarSubmit}/>
             </div>
-              <div className='example-1 center'>
-              { beaches[0].beach_name}
+            <div className='grid-container'>
+            <div className='example-1 '>
+                <Tile beach={beaches[0]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-2 center'>
-              {beaches[1].beach_name}
+              <div className='example-2 '>
+                <Tile beach={beaches[1]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-3 center'>
-              {beaches[2].beach_name}
+              <div className='example-3 '>
+                <Tile beach={beaches[2]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-4 center'>
-              {beaches[3].beach_name}
+              <div className='example-4 '>
+                <Tile beach={beaches[3]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-5 center'>
-              {beaches[4].beach_name}
+              <div className='example-5 '>
+                <Tile beach={beaches[4]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-6 center'>
-              {beaches[5].beach_name}
+              <div className='example-6 '>
+                <Tile beach={beaches[5]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-7 center'>
-              {beaches[6].beach_name}
+              <div className='example-7 '>
+                <Tile beach={beaches[6]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-8 center'>
-              {beaches[7].beach_name}
+              <div className='example-8 '>
+                <Tile beach={beaches[7]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
-              <div className='example-9 center'>
-              {beaches[8].beach_name}
+              <div className='example-9 '>
+                <Tile beach={beaches[8]} handleSubmit={props.handleTileButtonSubmit}></Tile>
               </div>
+            </div>
+              
         </div>
       );
   };

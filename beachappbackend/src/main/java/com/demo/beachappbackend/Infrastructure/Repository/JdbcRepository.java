@@ -21,7 +21,7 @@ public class JdbcRepository {
     public Beach getBeachById(Integer id){
         return jdbcTemplate.queryForObject(QUERY_FOR_BEACH_BY_ID, new BeanPropertyRowMapper<Beach>(Beach.class), id);
     }
-    private static final String QUERY_FOR_LIST = "SELECT * FROM beaches where beaches.name = ? ";
+    private static final String QUERY_FOR_LIST = "SELECT * FROM beachlist where beach_name = ? ";
     private static final String QUERY_FOR_BEACH_BY_ID = "SELECT * FROM beachlist where id = ? ";
 
 
