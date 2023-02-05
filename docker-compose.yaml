@@ -34,5 +34,5 @@ services:
     volumes:
 #      - ./postgres-data:/var/lib/postgresql/data #used if you want to maintain data across start up and shut down. Note volumes are execute in alphabetical order
       # copy the sql script to create tables
-      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
       - ./sql/hawaii_beaches.sql:/docker-entrypoint-initdb.d/hawaii_beaches.sql
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql

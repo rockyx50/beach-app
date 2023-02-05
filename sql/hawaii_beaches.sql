@@ -1,17 +1,4 @@
-CREATE TABLE beachList(
-   id SERIAL,
-   State_Code     VARCHAR(250) NOT NULL
-  ,County         VARCHAR(250) NOT NULL
-  ,Beach_Name     VARCHAR(250) NOT NULL
-  ,Monitored      VARCHAR(250)
-  ,Not_Monitored  VARCHAR(250)
-  ,Tier_Rank      INTEGER  NOT NULL
-  ,Comments       VARCHAR(250)
-  ,BeachLength_Mi FLOAT NOT NULL
-  ,BeachLength_km float NOT NULL
-  ,Rating         INTEGER NOT NULL
-  ,PRIMARY KEY(id,State_Code,County,Beach_Name)
-);
+
 INSERT INTO beachList(State_Code,County,Beach_Name,Monitored,Not_Monitored,Tier_Rank,Comments,BeachLength_Mi,BeachLength_km,Rating) VALUES ('HI','Hawaii','2nd Beach (Next to Mahaiula)','Yes',NULL,2,NULL,0.16,0.26,0);
 INSERT INTO beachList(State_Code,County,Beach_Name,Monitored,Not_Monitored,Tier_Rank,Comments,BeachLength_Mi,BeachLength_km,Rating) VALUES ('HI','Hawaii','Anaeho''omalu Bay','Yes',NULL,1,NULL,0.44,0.71,0);
 INSERT INTO beachList(State_Code,County,Beach_Name,Monitored,Not_Monitored,Tier_Rank,Comments,BeachLength_Mi,BeachLength_km,Rating) VALUES ('HI','Hawaii','Banyan''s Surfing Area','Yes',NULL,2,NULL,0.21,0.34,0);
@@ -416,3 +403,4 @@ INSERT INTO beachList(State_Code,County,Beach_Name,Monitored,Not_Monitored,Tier_
 INSERT INTO beachList(State_Code,County,Beach_Name,Monitored,Not_Monitored,Tier_Rank,Comments,BeachLength_Mi,BeachLength_km,Rating) VALUES ('HI','Maui','Wailea Beach Park','Yes',NULL,1,NULL,0.24,0.39,0);
 INSERT INTO beachList(State_Code,County,Beach_Name,Monitored,Not_Monitored,Tier_Rank,Comments,BeachLength_Mi,BeachLength_km,Rating) VALUES ('HI','Maui','Waimaha''ihai Beach',NULL,'Yes',3,NULL,0.48,0.77,0);
 INSERT INTO beachList(State_Code,County,Beach_Name,Monitored,Not_Monitored,Tier_Rank,Comments,BeachLength_Mi,BeachLength_km,Rating) VALUES ('HI','Maui','Waipuilani','Yes',NULL,2,NULL,0.76,1.22,0);
+

@@ -2,6 +2,7 @@ package com.demo.beachappbackend.Application;
 
 import com.demo.beachappbackend.Application.Exceptions.BeachException;
 import com.demo.beachappbackend.Domain.Model.Beach;
+import com.demo.beachappbackend.Domain.Model.BeachHistory;
 import com.demo.beachappbackend.Domain.Service.BeachService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -67,6 +68,11 @@ public class Controller {
             beachList.add(beachService.getBeachById(randNum));
         }
         return beachList;
+    }
+
+    @GetMapping(value = "getBeachHistory")
+    public List<BeachHistory> getBeachHistory(@RequestParam Integer beachId) throws BeachException {
+        return beachService.getBeachHistory(beachId);
     }
 
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
