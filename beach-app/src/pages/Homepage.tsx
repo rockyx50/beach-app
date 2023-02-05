@@ -2,12 +2,13 @@ import '../App.css';
 import { SearchBar } from '../components/SearchBar';
 import React, { useState, useEffect } from 'react';
 import { Tile } from '../components/Tile';
+import { BeachData } from '../components/Beach';
 
 
 
 function Homepage(props:{searchBarInput: any, handleSearchBarChange: any, handleSearchBarSubmit: any, handleTileButtonSubmit: any}) {
 
-  const beachList: {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0.0, tier_rank:0}[] = [];
+  const beachList: BeachData[] = [];
   for (let i = 0; i < 9; i++){
     beachList[i] = {id:0, beach_name:"", state_code:"", county:"", rating:0, beachlength_km:0.0, tier_rank:0};
   }
