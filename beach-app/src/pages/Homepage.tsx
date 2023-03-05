@@ -35,7 +35,6 @@ function Homepage(props:{searchBarInput: any, handleSearchBarChange: any, handle
         
         useEffect(() => { 
           getRandomListOfBeaches();
-        console.log(beaches);
           }, [])
         
   return (

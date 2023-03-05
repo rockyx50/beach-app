@@ -9,13 +9,16 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -73,6 +76,20 @@ public class Controller {
     @GetMapping(value = "getBeachHistory")
     public List<BeachHistory> getBeachHistory(@RequestParam Integer beachId) throws BeachException {
         return beachService.getBeachHistory(beachId);
+    }
+
+    @PostMapping(value = "submitBeachRating")
+    public ResponseEntity<Map<String, String>> submitBeachRating(@RequestBody BeachHistory beach) throws BeachException {
+        beachService.submitBeachRating(beach);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin", "*");
+        responseHeaders.set("Access-Control-Allow-Credentials", "true");
+        Map<String, String> responseBody = new HashMap<>();
+        responseBody.put("message", "Successfully rated beach");
+
+        return ResponseEntity.ok()
+                .headers(responseHeaders)
+                .body(responseBody);
     }
 
     @ResponseStatus(code = HttpStatus.NOT_FOUND)

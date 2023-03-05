@@ -17,7 +17,7 @@ function App() {
 
   const handleSearchBarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(event.target.value)
-    console.log(userInput)
+    // console.log(userInput)
   }
   
   const handleSearchBarSubmit = () => {

@@ -36,6 +36,7 @@ CREATE TABLE beach_history (
   beach_name varchar(250) NOT NULL,
   rating int NOT NULL,
   "user" varchar(250) NOT NULL,
+  rating_date DATE NOT NULL DEFAULT CURRENT_DATE,
   PRIMARY KEY (entry_id),
   CONSTRAINT fk_beach_id FOREIGN KEY(beach_id) REFERENCES beachlist(id)
 );

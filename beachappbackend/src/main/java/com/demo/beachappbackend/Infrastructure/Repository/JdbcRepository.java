@@ -22,12 +22,17 @@ public class JdbcRepository {
         return jdbcTemplate.query(QUERY_FOR_BEACH_HISTORY, new BeanPropertyRowMapper<>(BeachHistory.class), beachId);
     }
 
+    public void submitBeachRating(BeachHistory beach){
+        jdbcTemplate.update(SUBMIT_BEACH_RATING,beach.getId(),beach.getBeach_name(),beach.getRating(),beach.getUser());
+    }
+
     public Beach getBeachById(Integer id){
         return jdbcTemplate.queryForObject(QUERY_FOR_BEACH_BY_ID, new BeanPropertyRowMapper<Beach>(Beach.class), id);
     }
     private static final String QUERY_FOR_LIST = "SELECT * FROM beachlist where beach_name = ? ";
     private static final String QUERY_FOR_BEACH_BY_ID = "SELECT * FROM beachlist where id = ? ";
-    private static final String QUERY_FOR_BEACH_HISTORY = "SELECT * FROM beach_history where id = ? ";
+    private static final String QUERY_FOR_BEACH_HISTORY = "SELECT * FROM beach_history where beach_id = ? ";
+    private static final String SUBMIT_BEACH_RATING = "INSERT INTO beach_history(beach_id,beach_name,rating,\"user\") VALUES (?,?,?,?) ";
 
 
     @Autowired

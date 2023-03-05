@@ -1,5 +1,7 @@
 package com.demo.beachappbackend.Domain.Model;
 
+import java.sql.Date;
+
 public class BeachHistory {
     public int getId() {
         return id;
@@ -33,8 +35,18 @@ public class BeachHistory {
         this.user = user;
     }
 
+    public Date getRating_date() {
+        return rating_date;
+    }
+
+    public void setRating_date(Date rating_date) {
+        this.rating_date = rating_date;
+    }
+
     int id;
     String beach_name;
     int rating;
     String user;
+    Date rating_date;
 }
+

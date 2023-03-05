@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import './BeachPage.css';
 import React, { useState, useEffect } from 'react';
+import { Rating } from "./Rating";
+import { BeachHistory } from "../model/BeachHistory";
 
 
 export interface BeachData {
@@ -13,32 +15,73 @@ export interface BeachData {
   tier_rank: number;
 }
 
-export interface beachHistory {
-  id: number;
-  beach_name: string;
-  rating: number;
-  date: Date;
-  user: string}
-
 export function Beach(props:{beach:BeachData}){
 
-  const beachHistoryList: beachHistory[] = [];
-  for (let i = 0; i < 9; i++){
-    beachHistoryList[i] = {id:0, beach_name:"", rating:0, date:new Date("2022-03-25"), user:"John John Florence"};
+  const [beachRating, setBeachRating] = useState(new BeachHistory());
+  const handleRatingChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const beach = new BeachHistory();
+    beach.setBeach_name = props.beach.beach_name;
+    beach.setId = props.beach.id;
+    beach.setRating = event.target.valueAsNumber;
+    beach.setRating_date = new Date();
+    beach.setUser = "Test";
+    setBeachRating(beach);
   }
-  const [beachHistory, setbeachHistory] = useState(beachHistoryList);
   
+  const beachHistoryList: BeachHistory[] = [];
+  for (let i = 0; i < 9; i++){
+    const temp = new BeachHistory();
+    temp.setBeach_name = "";
+    temp.setId = 0;
+    temp.setRating = 0;
+    temp.setUser = "JJF";
+    temp.setRating_date = new Date();
+
+    beachHistoryList[i] = temp;    
+  }
+  const [beachHistory, setbeachHistory] = useState<BeachHistory[]>(beachHistoryList);
   
-    const DisplayData=beachHistory.map(
-      (info)=>{
-          return(
-              <tr>
-                  <td>{info.user}</td>
-                  <td>{info.rating}</td>
-                  <td>{info.date.toLocaleDateString()}</td>
-              </tr>
-          )
-      }
+
+  
+  const getBeachHistory = () => {
+    fetch(`http://localhost:8080/beachappbackend/getBeachHistory?beachId=${props.beach.id}`,{method:'GET'})
+         .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText)
+          }
+          return response.json() as Promise <typeof BeachHistory[]>})
+          .then((beaches) => {
+            if (beaches.length > 0){
+              const historyList: BeachHistory[] = [];
+              beaches.map(
+                (beach) =>
+                { 
+                  historyList.push(Object.assign(new BeachHistory(), beach))
+                }
+                )
+                setbeachHistory(historyList);
+            } 
+          }
+        )  
+         .catch((err) => {
+            console.log(err.message);
+         });
+  }
+
+  useEffect(() => { 
+    getBeachHistory();
+    }, [])
+  
+  const DisplayData=beachHistory.map(
+    (info)=>{
+        return(
+            <tr>
+                <td>{info.getUser}</td>
+                <td>{info.getRating}</td>
+                <td>{new Date(info.getRating_date).toLocaleDateString()}</td>
+            </tr>
+        )
+    }
   )
   
     
@@ -51,6 +94,8 @@ export function Beach(props:{beach:BeachData}){
     <div className="name center column-aligned">
       <h1>Name: {props.beach.beach_name}</h1>
       <h2>Rating: {props.beach.rating}</h2>
+      <Rating handleChange={handleRatingChange} beach={beachRating}/>
+
     </div>
     <div className="info center">
       <div className="beach-info center">
@@ -59,8 +104,8 @@ export function Beach(props:{beach:BeachData}){
         <h2>Beach Length: {props.beach.beachlength_km * 1000}m</h2>
       </div>
     </div>
-    <div className="history center">
-      <table >
+    <div className="history table">
+      <table width={"40%"}>
         <thead>
           <tr>
           <th>User</th>

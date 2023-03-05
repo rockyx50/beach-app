@@ -19,6 +19,10 @@ public class BeachService {
         return jdbcRepository.getBeachHistory(beachId);
     }
 
+    public void submitBeachRating(BeachHistory beach){
+        jdbcRepository.submitBeachRating(beach);
+    }
+
     public Beach getBeachById(Integer id){
         return jdbcRepository.getBeachById(id);
     }
