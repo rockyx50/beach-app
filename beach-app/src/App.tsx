@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { SearchBar } from './components/SearchBar';
@@ -19,6 +19,13 @@ function App() {
     setUserInput(event.target.value)
     // console.log(userInput)
   }
+  useEffect(() => { 
+  const temp = JSON.parse(localStorage.getItem('beach') || '{}');
+  if (temp !== null){
+    setBeach(temp);
+    console.log(beach)
+  }
+    }, [])
   
   const handleSearchBarSubmit = () => {
     // setUserInput(userInput.toLowerCase())
@@ -32,8 +39,15 @@ function App() {
          .then((data) => {
           setUserInput("");
           if (data.length > 0){
-            setBeach(data[0]);
-            navigate(`/${userInput}`);
+            if (data[0] != null){
+              localStorage.setItem('beach', JSON.stringify(data[0]));
+              if (localStorage.getItem('beach') != null){
+                setBeach(JSON.parse(localStorage.getItem('beach') || '{}'));
+              }
+              
+              navigate(`/${userInput}`);
+            }
+            
           } 
          })
          .catch((err) => {
@@ -42,8 +56,14 @@ function App() {
          navigate("notfound");
   }
   const handleTileButtonSubmit = (beachInput:BeachData) => {
-    setBeach(beachInput);
-    navigate(`/${beachInput.beach_name}`);
+    if (beachInput != null){
+      localStorage.setItem('beach', JSON.stringify(beachInput));
+      if (localStorage.getItem('beach') != null){
+        setBeach(JSON.parse(localStorage.getItem('beach') || '{}'));
+      }
+      navigate(`/${beachInput.beach_name}`);
+    }
+    
   }
 
   return (

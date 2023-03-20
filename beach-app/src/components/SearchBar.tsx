@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import '../App.css';
+import './SearchBar.css';
+import searchLogo from '../magnifying-glass-solid.svg'
+
 
 
 
@@ -7,12 +9,13 @@ import '../App.css';
 export function SearchBar(props:{userInput: any, handleChange: any, handleSubmit: any}){
 
   return(
-  <div>
-    <form onSubmit={() => props.handleSubmit()}>
-          <label>
-            <input type="text" placeholder='Find a beach' onChange={(event) => props.handleChange(event)}/>
-          </label>
-          <input type="submit" value="Submit" />
+    
+  <div >
+    {/* <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> */}
+
+    <form className="search-box" onSubmit={() => props.handleSubmit()}>
+      <button className="btn-search" type="submit" value="Submit"><img src={searchLogo} alt="my image"/></button>
+      <input type="text" className="input-search" placeholder="Find a beach" onChange={(event) => props.handleChange(event)}/>
     </form>
     <p>The current state is {props.userInput}</p>
   </div>

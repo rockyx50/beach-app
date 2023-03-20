@@ -27,6 +27,18 @@ public class BeachService {
         return jdbcRepository.getBeachById(id);
     }
 
+    public void calculateBeachRating(int beachId)
+    {
+        List<BeachHistory> beaches = jdbcRepository.getBeachHistory(beachId);
+        float average = 0f;
+        for(BeachHistory beachHistory: beaches){
+            average += beachHistory.getRating();
+            System.out.println(average);
+        }
+        average = average/beaches.size();
+        jdbcRepository.updateBeachRating(beachId,average);
+    }
+
     @Autowired
     JdbcRepository jdbcRepository;
 }

@@ -50,11 +50,11 @@ public class Beach {
         this.beachlength_km = beachlength_km;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
@@ -64,5 +64,18 @@ public class Beach {
     String beach_name;
     int tier_rank;
     float beachlength_km;
-    int rating;
+    float rating;
+
+    @Override
+    public String toString() {
+        return "Beach{" +
+                "id=" + id +
+                ", state_code='" + state_code + '\'' +
+                ", county='" + county + '\'' +
+                ", beach_name='" + beach_name + '\'' +
+                ", tier_rank=" + tier_rank +
+                ", beachlength_km=" + beachlength_km +
+                ", rating=" + rating +
+                '}';
+    }
 }

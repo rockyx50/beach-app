@@ -25,7 +25,7 @@ CREATE TABLE beachList(
   ,Comments       VARCHAR(250)
   ,BeachLength_Mi FLOAT NOT NULL
   ,BeachLength_km float NOT NULL
-  ,Rating         INTEGER NOT NULL
+  ,Rating         FLOAT NOT NULL
   ,PRIMARY KEY(id)
 );
 

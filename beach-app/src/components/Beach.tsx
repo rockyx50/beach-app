@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import './BeachPage.css';
 import React, { useState, useEffect } from 'react';
-import { Rating } from "./Rating";
+// import { StarRating } from "./StarRating";
 import { BeachHistory } from "../model/BeachHistory";
+import ReactStars from 'react-stars';
+
+
 
 
 export interface BeachData {
@@ -16,17 +19,13 @@ export interface BeachData {
 }
 
 export function Beach(props:{beach:BeachData}){
-
-  const [beachRating, setBeachRating] = useState(new BeachHistory());
-  const handleRatingChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const beach = new BeachHistory();
+  const beach = new BeachHistory();
     beach.setBeach_name = props.beach.beach_name;
     beach.setId = props.beach.id;
-    beach.setRating = event.target.valueAsNumber;
+    beach.setRating = 0;
     beach.setRating_date = new Date();
     beach.setUser = "Test";
-    setBeachRating(beach);
-  }
+  const [beachRating, setBeachRating] = useState(beach);
   
   const beachHistoryList: BeachHistory[] = [];
   for (let i = 0; i < 9; i++){
@@ -68,9 +67,30 @@ export function Beach(props:{beach:BeachData}){
          });
   }
 
+  const handleRatingSubmit = (newRating:number) => {
+    beach.setRating = newRating;
+
+    fetch(`http://localhost:8080/beachappbackend/submitBeachRating`,{method:'POST',body: JSON.stringify(beach),headers:{'Content-Type': 'application/json'}})
+         .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText)
+          }
+          response.json();
+        })
+         .then((data) => {
+          // console.log(data);
+          getBeachHistory();
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+
+  }
+
   useEffect(() => { 
     getBeachHistory();
-    }, [])
+    setBeachRating(beach);
+    }, [props])
   
   const DisplayData=beachHistory.map(
     (info)=>{
@@ -93,8 +113,10 @@ export function Beach(props:{beach:BeachData}){
     </div>
     <div className="name center column-aligned">
       <h1>Name: {props.beach.beach_name}</h1>
-      <h2>Rating: {props.beach.rating}</h2>
-      <Rating handleChange={handleRatingChange} beach={beachRating}/>
+      <h2>Rating: {props.beach.rating.toFixed(1)}</h2>
+      <div>
+    <ReactStars count={5} onChange={handleRatingSubmit} size={24} color2={'#ffd700'} />
+      </div>
 
     </div>
     <div className="info center">

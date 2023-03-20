@@ -81,6 +81,7 @@ public class Controller {
     @PostMapping(value = "submitBeachRating")
     public ResponseEntity<Map<String, String>> submitBeachRating(@RequestBody BeachHistory beach) throws BeachException {
         beachService.submitBeachRating(beach);
+        beachService.calculateBeachRating(beach.getId());
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Access-Control-Allow-Origin", "*");
         responseHeaders.set("Access-Control-Allow-Credentials", "true");
