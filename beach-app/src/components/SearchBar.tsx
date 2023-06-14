@@ -17,7 +17,7 @@ export function SearchBar(props:{userInput: any, handleChange: any, handleSubmit
       <button className="btn-search" type="submit" value="Submit"><img src={searchLogo} alt="my image"/></button>
       <input type="text" className="input-search" placeholder="Find a beach" onChange={(event) => props.handleChange(event)}/>
     </form>
-    <p>The current state is {props.userInput}</p>
+    {/* <p>The current state is {props.userInput}</p> */}
   </div>
   );
   }

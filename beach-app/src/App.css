@@ -35,6 +35,8 @@ html,body{margin:0;padding:0;}
   grid-column-gap: 0px;
   grid-row-gap: 10px;
   height: 100vh;
+  background-image: url("background-7.png");
+  background-repeat: repeat;
   }
 .grid-container {
   grid-column-start: 1;
