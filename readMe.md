@@ -16,6 +16,6 @@ Containerized though Docker
 
 `chrome.exe --disable-web-security --user-data-dir=c:\my-chrome-data\data`
 
-#DEMO
+# DEMO
 https://github.com/rockyx50/beach-app/assets/60040283/8efa794a-f745-4376-b40a-e0402ae5c668
 
