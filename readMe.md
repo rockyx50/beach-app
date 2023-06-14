@@ -1,4 +1,4 @@
-# DEMO
+# Beach App
 https://github.com/rockyx50/beach-app/assets/60040283/8efa794a-f745-4376-b40a-e0402ae5c668
 
 # Read Me
