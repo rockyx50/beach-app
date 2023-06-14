@@ -1,5 +1,5 @@
 # Beach App
-https://github.com/rockyx50/beach-app/assets/60040283/8efa794a-f745-4376-b40a-e0402ae5c668
+https://github.com/rockyx50/beach-app/assets/60040283/c06ed6d4-4d5d-4401-8b73-44801edaec7b
 
 # Read Me
 
